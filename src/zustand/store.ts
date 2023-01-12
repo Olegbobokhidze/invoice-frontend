@@ -14,7 +14,7 @@ const useStore = create<InvoiceState>((set) => ({
   addInvoice: async (invoice: Invoice) => {
     try {
       const response = await axios.post(
-        "http://localhost:3009/api/invoices",
+        "https://invoice-api-0wdz.onrender.com/api/invoices",
         invoice
       );
       set((state) => ({
@@ -26,7 +26,9 @@ const useStore = create<InvoiceState>((set) => ({
   },
   fetchInvoices: async () => {
     try {
-      const response = await axios.get("http://localhost:3009/invoices");
+      const response = await axios.get(
+        "https://invoice-api-0wdz.onrender.com/invoices"
+      );
       set((state) => ({
         invoices: response.data,
       }));
@@ -35,16 +37,20 @@ const useStore = create<InvoiceState>((set) => ({
     }
   },
   deleteInvoice: (id: string) => {
-    axios.delete(`http://localhost:3009/invoices/${id}`).then(() => {
-      set((state: InvoiceState) => {
-        const invoices = state.invoices.filter((item: any) => item._id !== id);
-        return { invoices };
+    axios
+      .delete(`https://invoice-api-0wdz.onrender.com/invoices/${id}`)
+      .then(() => {
+        set((state: InvoiceState) => {
+          const invoices = state.invoices.filter(
+            (item: any) => item._id !== id
+          );
+          return { invoices };
+        });
       });
-    });
   },
   editInvoice: async (id: any, data: any) => {
     await axios
-      .put(`http://localhost:3009/editInvoice/${id}`, data)
+      .put(`https://invoice-api-0wdz.onrender.com/editInvoice/${id}`, data)
       .then((res: any) => {
         set((state: InvoiceState) => {
           return { ...state, res };
