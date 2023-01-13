@@ -32,7 +32,7 @@ export const Main = () => {
       document.title = `Invoices (${PendingLength.length})`;
     }
     fetchInvoices();
-  },[invoices.length,fetchInvoices, status, PaidLength.length, PendingLength.length]);
+  },[invoices.length,fetchInvoices, status, PaidLength.length, PendingLength.length, invoices]);
   const filteredInvoices = invoices.filter((invoice) => {
     if (status === "all") {
       return true;
