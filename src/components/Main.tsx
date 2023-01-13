@@ -26,7 +26,7 @@ export const Main = () => {
   const invStatus = invoices.filter((inv) => inv.status);
   useEffect(() => {
     fetchInvoices();
-  },[fetchInvoices, invoices]);
+  },[fetchInvoices]);
   const filteredInvoices = invoices.filter((invoice) => {
     if (status === "all") {
       return true;
