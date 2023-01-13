@@ -48,12 +48,19 @@ const useStore = create<InvoiceState>((set) => ({
         });
       });
   },
-  editInvoice: async (id: any, data: any) => {
+ editInvoice: async (id: any, data: any) => {
     await axios
       .put(`https://invoice-api-0wdz.onrender.com/editInvoice/${id}`, data)
       .then((res: any) => {
-        set((state: InvoiceState) => {
-          return { ...state, res };
+        set((state: any) => {
+          const updatedInvoices = [...state.invoices];
+          
+          const index = updatedInvoices.findIndex(
+            (invoice) => invoice._id === id
+          );
+          
+          updatedInvoices[index] = res.data;
+          return { invoices: updatedInvoices };
         });
       });
   },
