@@ -33,7 +33,6 @@ export const Main = () => {
     }
     fetchInvoices();
   },[
-    invoices,
     fetchInvoices,
     status,
     PendingLength.length,
