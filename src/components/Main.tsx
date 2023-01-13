@@ -25,8 +25,22 @@ export const Main = () => {
   const PendingLength = invoices.filter((inv) => inv.status === "pending");
   const invStatus = invoices.filter((inv) => inv.status);
   useEffect(() => {
+    if (status === "all") {
+      document.title = `Invoices (${invoices.length})`;
+    } else if (status === "paid") {
+      document.title = `Invoices (${PaidLength.length})`;
+    } else if (status === "pending") {
+      document.title = `Invoices (${PendingLength.length})`;
+    }
     fetchInvoices();
-  },[fetchInvoices]);
+  }, [
+    invoices.length,
+    fetchInvoices,
+    status,
+    PaidLength.length,
+    PendingLength.length,
+    invoices,
+  ]);
   const filteredInvoices = invoices.filter((invoice) => {
     if (status === "all") {
       return true;
