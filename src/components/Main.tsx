@@ -23,6 +23,7 @@ export const Main = () => {
   const { invoices, fetchInvoices } = useStore();
   const PaidLength = invoices.filter((inv) => inv.status === "paid");
   const PendingLength = invoices.filter((inv) => inv.status === "pending");
+  const invStatus = invoices.filter((inv) => inv);
   useEffect(() => {
     if (status === "all") {
       document.title = `Invoices (${invoices.length})`;
@@ -32,7 +33,7 @@ export const Main = () => {
       document.title = `Invoices (${PendingLength.length})`;
     }
     fetchInvoices();
-  },[invoices.length,fetchInvoices, status, PaidLength.length, PendingLength.length, invoices]);
+  },[invoices.length,fetchInvoices, status, PaidLength.length, PendingLength.length, invStatus]);
   const filteredInvoices = invoices.filter((invoice) => {
     if (status === "all") {
       return true;
