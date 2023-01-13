@@ -33,10 +33,7 @@ export const Main = () => {
     }
     fetchInvoices();
   },[
-    fetchInvoices,
-    status,
-    PendingLength.length,
-    PaidLength.length,
+    fetchInvoices
   ]);
   const filteredInvoices = invoices.filter((invoice) => {
     if (status === "all") {
