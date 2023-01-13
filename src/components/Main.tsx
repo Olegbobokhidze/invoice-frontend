@@ -23,7 +23,7 @@ export const Main = () => {
   const { invoices, fetchInvoices } = useStore();
   const PaidLength = invoices.filter((inv) => inv.status === "paid");
   const PendingLength = invoices.filter((inv) => inv.status === "pending");
-  const invStatus = invoices.filter((inv) => inv);
+  const invStatus = invoices.filter((inv) => inv.status);
   useEffect(() => {
     if (status === "all") {
       document.title = `Invoices (${invoices.length})`;
