@@ -34,6 +34,7 @@ export const Main = () => {
     }
     fetchInvoices();
   }, [
+    invoices,
     invoices.length,
     fetchInvoices,
     status,
