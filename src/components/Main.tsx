@@ -25,11 +25,11 @@ export const Main = () => {
   const PendingLength = invoices.filter((inv) => inv.status === "pending");
   const invStatus = invoices.filter((inv) => inv.status);
   useEffect(() => {
-    if (status === "all") {
+    if (status === "all" && invoices) {
       document.title = `Invoices (${invoices.length})`;
-    } else if (status === "paid") {
+    } else if (status === "paid" && invoices) {
       document.title = `Invoices (${PaidLength.length})`;
-    } else if (status === "pending") {
+    } else if (status === "pending" && invoices) {
       document.title = `Invoices (${PendingLength.length})`;
     }
     fetchInvoices();
